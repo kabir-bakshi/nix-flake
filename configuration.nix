@@ -2,12 +2,15 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+    [
+      # Include the results of the hardware scan.
+      /etc/nixos/hardware-configuration.nix
+
+      # 
     ];
 
   # Bootloader.
@@ -20,7 +23,8 @@
   # Enable backlight support
   hardware.i2c.enable = true;
 
-  networking.hostName = "nixos"; # Define your hostname.
+  # Define your hostname.
+  networking.hostName = "nixos";
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -79,17 +83,19 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.kabir = {
-    isNormalUser = true;
-    description = "Kabir Bakshi";
-    extraGroups = [ "networkmanager" "wheel" ]; # i2c for baclight control
-    packages = with pkgs; [
-    #  thunderbird 
-    ];
+  users.users = {
+    kabir = {
+      isNormalUser = true;
+      description = "Kabir Bakshi";
+      extraGroups = [ "networkmanager" "wheel" ]; # i2c for baclight control
+      packages = with pkgs; [
+        # thunderbird 
+      ];
+    };
   };
 
   # Install firefox.
-  programs.firefox.enable = true;
+  # programs.firefox.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -114,6 +120,7 @@
       localsend # file share
       easyeffects # equaliser and other
       git
+      gparted
     
     # JAVA
       jre21_minimal
@@ -142,7 +149,7 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
