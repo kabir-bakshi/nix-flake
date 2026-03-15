@@ -8,9 +8,7 @@
   imports =
     [
       # Include the results of the hardware scan.
-      /etc/nixos/hardware-configuration.nix
-
-      # 
+      ./hardware-configuration.nix
     ];
 
   # Bootloader.
@@ -113,14 +111,16 @@
       
     
     # UTILITY
-        # for backlight control
-          # lm_sensors
-          # i2c-tools
-          ddcutil
-      localsend # file share
-      easyeffects # equaliser and other
-      git
-      gparted
+      # backlight control
+        ddcutil
+      # file share
+        localsend
+      # equaliser and other
+        easyeffects
+      # version control
+        git
+      # editing disk partitions
+        gparted
     
     # JAVA
       jre21_minimal
