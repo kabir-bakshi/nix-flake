@@ -5,21 +5,27 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
 		nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    # home-manager.url = "github:nixos-community/home-manager";
-    #   home-manager.inputs.nixpkgs.follows = "nixpkgs";
+		nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
+
+    home-manager = {
+			url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+		};
   };
 
-  outputs = { nixpkgs, ... } @ inputs:
+  outputs = { nixpkgs, nixpkgs-unstable, nix-flatpak, ... } @ inputs:
   let
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.x86_64-linux;
   in {
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem { # Where "nixos" is my hostname.
+    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem { # Where "nixos" (written after "nixosConfigurations") is my hostname.
       specialArgs = { inherit inputs; };
+
       modules = [
         ./configuration.nix
+				inputs.home-manager.nixosModules.default
+				nix-flatpak.nixosModules.nix-flatpak
       ];
     };
-
   };
 }

@@ -7,7 +7,7 @@
 {
   imports = [
     # Include the results of the hardware scan.
-    ./hardware-configuration.nix
+    /etc/nixos/hardware-configuration.nix
   ];
 
   # Bootloader.
@@ -113,18 +113,21 @@
         localsend
       # equaliser and other
         easyeffects
+      # download manager
+        uget
       # version control
         git
       # editing disk partitions
         gparted
       # editing nram
         efibootmgr
-      
+      # iso image writer
+        isoimagewriter
     # JAVA
       jre21_minimal
     
     # GNOME
-      gnome-tweaks
+      refine
       gnome-extension-manager
       # Extensions
         gnomeExtensions.dash-to-panel
@@ -132,6 +135,11 @@
   
   # Enable Flatpak
   services.flatpak.enable = true;
+
+  services.flatpak.packages = [
+    "org.telegram.desktop"
+  ];
+
   
   # Permanently enable EXPERIMENTAL support for flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
