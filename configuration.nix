@@ -5,11 +5,10 @@
 { config, pkgs, inputs, ... }:
 
 {
-  imports =
-    [
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -92,9 +91,6 @@
     };
   };
 
-  # Install firefox.
-  # programs.firefox.enable = true;
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -110,7 +106,7 @@
     # SOCIAL
       
     
-    # UTILITY
+    # UTILITY for
       # backlight control
         ddcutil
       # file share
@@ -121,7 +117,9 @@
         git
       # editing disk partitions
         gparted
-    
+      # editing nram
+        efibootmgr
+      
     # JAVA
       jre21_minimal
     
