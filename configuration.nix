@@ -102,7 +102,8 @@
   
     # BROWSER
       brave
-    
+    # BACKUP
+      rclone    
     # UTILITY for
       # backlight control
         ddcutil
@@ -128,9 +129,8 @@
       gnome-extension-manager
       # Extensions
         gnomeExtensions.dash-to-panel
-    # Games
-      # Minecraft
-        
+    # GAMES
+  
   ];
   
   # Enable Flatpak
