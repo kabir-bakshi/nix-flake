@@ -98,13 +98,10 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     # TEXT EDITOR
-      vscode
+#      vscode
   
     # BROWSER
       brave
-      
-    # SOCIAL
-      
     
     # UTILITY for
       # backlight control
@@ -122,15 +119,18 @@
       # editing nram
         efibootmgr
       # iso image writer
-        isoimagewriter
+        mediawriter
     # JAVA
-      jre21_minimal
+      jdk21_headless
     
     # GNOME
       refine
       gnome-extension-manager
       # Extensions
         gnomeExtensions.dash-to-panel
+    # Games
+      # Minecraft
+        
   ];
   
   # Enable Flatpak
@@ -138,6 +138,8 @@
 
   services.flatpak.packages = [
     "org.telegram.desktop"
+    { flatpakref = "https://elyprismlauncher.github.io/flatpak/elyprismlauncher.flatpakref"; sha256="b7c919c031d048cc01e2378909aa030e4737417008c5ab0ea29cab098b50b477"; }
+#    "io.github.elyprismlauncher.ElyPrismLauncher"
   ];
 
   
