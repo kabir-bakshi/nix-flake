@@ -91,6 +91,19 @@
     };
   };
 
+  security.sudo.extraRules = [
+    { 
+      users = [ "kabir" ];
+      commands = [ 
+        {
+          command = "/run/current-system/sw/bin/ddcutil";
+          options = [ "NOPASSWD" ];
+        }
+      ]; 
+    }
+  ];
+
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -98,8 +111,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     # TEXT EDITOR
-#      vscode
-  
+      vim
     # BROWSER
       brave
     # BACKUP
@@ -120,17 +132,20 @@
       # editing nram
         efibootmgr
       # iso image writer
-        mediawriter
+        # mediawriter
     # JAVA
-      jdk21_headless
-    
+      javaPackages.compiler.openjdk21    
     # GNOME
       refine
-      gnome-extension-manager
+      # gnome-extension-manager
       # Extensions
-        gnomeExtensions.dash-to-panel
+        #gnomeExtensions.dash-to-panel
+        gnomeExtensions.dash-to-dock
+        gnomeExtensions.paperwm
     # GAMES
-  
+    
+    # IP TUNNELING
+      zerotierone
   ];
   
   # Enable Flatpak
