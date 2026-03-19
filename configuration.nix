@@ -157,8 +157,8 @@
         #gnomeExtensions.dash-to-panel
         gnomeExtensions.dash-to-dock
         gnomeExtensions.paperwm
-    # GAMES
-    
+    # GAMES & WINDOWS
+      heroic
     # IP TUNNELING
       zerotierone
       bibata-cursors

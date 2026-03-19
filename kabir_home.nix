@@ -10,7 +10,7 @@
 				echo
 			'';
 			shellAliases = {
-				crclone="sh ~/Documents/rclone\ sync.sh";
+				crclone="sh ~/Documents/rclone\\ sync.sh";
 				
 				editconf="vim ~/nix-flake/configuration.nix";
 				editflake="vim ~/nix-flake/flake.nix";
@@ -18,7 +18,7 @@
 				nrs="sudo nixos-rebuild switch --impure --flake ~/nix-flake/";
 				nfu="nix flake update --flake ~/nix-flake/ && nrs";
 
-				smcs="cd /home/kabir/Documents/Sync\ Sewer && sh start.sh";
+				smcs="cd ~/Documents/Sync\\ Sewer; sh start.sh";
 
 			};
 		};
