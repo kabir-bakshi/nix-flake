@@ -2,15 +2,18 @@
 {
 	home.username = "kabir";
 	home.homeDirectory = "/home/kabir";
-	home.stateVersion = "25.11";
+	
 	programs = {
 		bash = {
 			enable = true;
+			initExtra = ''
+				echo
+			'';
 			shellAliases = {
 				crclone="sh ~/Documents/rclone\ sync.sh";
 				
-				editconf="nano ~/nix-flake/configuration.nix";
-				editflake="nano ~/nix-flake/flake.nix";
+				editconf="vim ~/nix-flake/configuration.nix";
+				editflake="vim ~/nix-flake/flake.nix";
 
 				nrs="sudo nixos-rebuild switch --impure --flake ~/nix-flake/";
 				nfu="nix flake update --flake ~/nix-flake/ && nrs";
@@ -21,6 +24,6 @@
 		};
 	};
 	
-	
-	
+
+	home.stateVersion = "25.11";
 }

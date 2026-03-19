@@ -11,6 +11,8 @@
 			url = "github:nix-community/home-manager/release-25.11";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+		
+		stylix.url = "github:nix-community/stylix/release-25.11";
 	};
 
 	outputs = { nixpkgs, nixpkgs-unstable, nix-flatpak, home-manager, ... } @ inputs: {
@@ -35,6 +37,8 @@
 							users.kabir = ./kabir_home.nix;
 						};
 					}
+					
+					inputs.stylix.nixosModules.stylix
 				];
 			};
 		};

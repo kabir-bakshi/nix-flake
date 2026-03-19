@@ -52,6 +52,18 @@
   services.desktopManager.gnome.enable = true;
   
   services.gnome.core-apps.enable = false;
+  
+  #  Stylix config
+  stylix = {
+    enable = true;
+    polarity = "dark";
+    image = ./Media/Wallpapers/sunrise.jpg;
+    # cursor = {
+      # package = pkgs.bibata-cursors;
+      # name = "Bibata-Modern-Amber";
+    # };
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/woodland.yaml";
+  };
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -138,6 +150,7 @@
     # JAVA
       javaPackages.compiler.openjdk21    
     # GNOME
+      nautilus
       refine
       gnome-console
       # Extensions
@@ -148,6 +161,7 @@
     
     # IP TUNNELING
       zerotierone
+      bibata-cursors
   ];
   
   # Enable Flatpak
@@ -155,32 +169,20 @@
 
   services.flatpak.packages = [
     "org.telegram.desktop"
-    { flatpakref = "https://elyprismlauncher.github.io/flatpak/elyprismlauncher.flatpakref"; sha256="b7c919c031d048cc01e2378909aa030e4737417008c5ab0ea29cab098b50b477"; }
-#    "io.github.elyprismlauncher.ElyPrismLauncher"
+    {
+      flatpakref = "https://elyprismlauncher.github.io/flatpak/elyprismlauncher.flatpakref";
+      sha256="b7c919c031d048cc01e2378909aa030e4737417008c5ab0ea29cab098b50b477";
+    }
   ];
 
   
   # Permanently enable EXPERIMENTAL support for flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
