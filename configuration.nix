@@ -10,13 +10,42 @@
     /etc/nixos/hardware-configuration.nix
   ];
 
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  # Boot Config
+  boot = {
+    loader = { 
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+    };
+    
+    # Silence first boot output
+    consoleLogLevel = 3;    
+    initrd = {
+      verbose = false;
+      systemd.enable = true;
+    };
+    
+    kernelParams = [
+      "quiet"
+      "splash"
+      "udev.log_level=3"
+      "systemd.show_status=auto"
+    ];
+    
+    # Use latest kernel and add modules.
+    kernelPackages = pkgs.linuxPackages_latest;
 
-  # Use latest kernel and add modules.
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-  
+    plymouth = {
+      enable = true;
+      theme = "splash";
+      themePackages = with pkgs; [
+        # By default we would install all themes
+        (adi1090x-plymouth-themes.override {
+          selected_themes = [ "splash" ];
+        })
+      ];
+    };
+  };
+
   # Enable backlight support
   hardware.i2c.enable = true;
 
@@ -62,7 +91,8 @@
       # package = pkgs.bibata-cursors;
       # name = "Bibata-Modern-Amber";
     # };
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/woodland.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/chalk.yaml";
+    targets.plymouth.enable = false;
   };
 
   # Configure keymap in X11
@@ -70,9 +100,6 @@
     layout = "us";
     variant = "";
   };
-
-  # Enable CUPS to print documents.
-  services.printing.enable = false;
 
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
