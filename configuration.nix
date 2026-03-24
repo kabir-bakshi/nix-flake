@@ -54,6 +54,10 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+  
+  networking.nftables.enable = true;
+
+  services.avahi.enable = false;
 
   # Set your time zone.
   time.timeZone = "Asia/Kolkata";
@@ -184,13 +188,19 @@
         #gnomeExtensions.dash-to-panel
         gnomeExtensions.dash-to-dock
         gnomeExtensions.paperwm
+        gnomeExtensions.hide-top-bar
+        gnomeExtensions.tray-icons-reloaded
     # GAMES & WINDOWS
       heroic
     # IP TUNNELING
       zerotierone
+      netbird-ui
+      
       bibata-cursors
   ];
   
+  services.netbird.enable = true;
+
   # Enable Flatpak
   services.flatpak.enable = true;
 
@@ -201,7 +211,8 @@
       sha256="b7c919c031d048cc01e2378909aa030e4737417008c5ab0ea29cab098b50b477";
     }
   ];
-
+  
+  virtualisation.waydroid.enable = true;
   
   # Permanently enable EXPERIMENTAL support for flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
