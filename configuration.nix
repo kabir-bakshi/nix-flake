@@ -184,7 +184,10 @@
       nautilus
       refine
       gnome-console
-      # Extensions
+      eog
+    # KDE
+      kdePackages.okular  
+    # Extensions
         #gnomeExtensions.dash-to-panel
         gnomeExtensions.dash-to-dock
         gnomeExtensions.paperwm
@@ -194,12 +197,15 @@
       heroic
     # IP TUNNELING
       zerotierone
-      netbird-ui
+      # inputs.nixpkgs-unstable.legacyPackages.${pkgs.system}.netbird
       
       bibata-cursors
+
+    # Programming
+       rustc # Rust
   ];
   
-  services.netbird.enable = true;
+  # services.netbird.enable = true; # Latest version can be obtained using manual installation method given in docs. but it needs you to run "sudo netbird service run" manually or you can set this command itself to run on boot.
 
   # Enable Flatpak
   services.flatpak.enable = true;
