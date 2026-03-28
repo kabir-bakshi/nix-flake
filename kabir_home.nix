@@ -6,14 +6,14 @@
 	programs = {
 		bash = {
 			enable = true;
-			initExtra = ''
-				echo
+  			initExtra = ''
+				export PATH=$PATH:/usr/bin 
 			'';
 			shellAliases = {
 				crclone="sh ~/Documents/rclone\\ sync.sh";
 				
-				editconf="vim ~/nix-flake/configuration.nix";
-				editflake="vim ~/nix-flake/flake.nix";
+				editconf="nvim ~/nix-flake/configuration.nix";
+				editflake="nvim ~/nix-flake/flake.nix";
 
 				nrs="sudo nixos-rebuild switch --impure --flake ~/nix-flake/";
 				nfu="nix flake update --flake ~/nix-flake/ && nrs";
