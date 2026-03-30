@@ -90,7 +90,7 @@
   stylix = {
     enable = true;
     polarity = "dark";
-    image = ./Media/Wallpapers/sunrise.jpg;
+    image = ./Media/Wallpapers/kannur_blueprint.svg;
     # cursor = {
       # package = pkgs.bibata-cursors;
       # name = "Bibata-Modern-Amber";
@@ -192,7 +192,7 @@
         gnomeExtensions.dash-to-dock
         gnomeExtensions.paperwm
         gnomeExtensions.hide-top-bar
-        gnomeExtensions.tray-icons-reloaded
+        gnomeExtensions.appindicator
     # GAMES & WINDOWS
       heroic
     # IP TUNNELING

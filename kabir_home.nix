@@ -12,7 +12,7 @@
         echo ॐ गं गणपतये नमः।
 
         source git-prompt.sh
-        PROMPT_COMMAND='PS1_CMD1=$(__git_ps1 " (%s)")'; PS1='\n\[\e[2m\]╭─ \[\e[3m\]\[\e[0m\] \[\e[2;3m\]\u\[\e[23m\] ── \[\e[3m\]\[\e[0m\]  \[\e[2;3m\]\w\[\e[23m\] ── \[\e[3m\]$PS1_CMD1\[\e[23m\] ── \[\e[1m\]\n\[\e[0;2m\]│\n\[\e[0m\]\[\e[2m\]╰─(󰥳) \[\e[0m\]' 
+        PROMPT_COMMAND='PS1_CMD1=$(__git_ps1 " (%s)")'; PS1='\n\[\e[2m\]╭─ \[\e[3m\]\[\e[0m\] \[\e[2;3m\]\u\[\e[23m\] ── \[\e[3m\]\[\e[0m\]  \[\e[2;3m\]\w\[\e[23m\] ── \[\e[3m\]$PS1_CMD1\[\e[23m\] ── \[\e[1m\]\n\[\e[0;2m\]│\n\[\e[0m\]\[\e[2m\]╰─(󰥳) \[\e[0m\]'
       '';
 			shellAliases = {
         la="ls -al";
