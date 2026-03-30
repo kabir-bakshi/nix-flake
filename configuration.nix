@@ -204,7 +204,6 @@
     # Programming
       nerd-fonts.intone-mono # font, duh...
       neovim # Code Editor
-      rustc # Rust
   ];
   
   # services.netbird.enable = true; # Latest version can be obtained using manual installation method given in docs. but it needs you to run "sudo netbird service run" manually or you can set this command itself to run on boot.
