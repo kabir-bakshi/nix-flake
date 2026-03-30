@@ -9,10 +9,10 @@
   			initExtra = ''
 				export PATH=$PATH:/usr/bin 
 			  
-        echo ॐ गं गणपतये नमः।
+        echo 󰥳 गं गणपतये नमः।
 
-        source git-prompt.sh
-        PROMPT_COMMAND='PS1_CMD1=$(__git_ps1 " (%s)")'; PS1='\n\[\e[2m\]╭─ \[\e[3m\]\[\e[0m\] \[\e[2;3m\]\u\[\e[23m\] ── \[\e[3m\]\[\e[0m\]  \[\e[2;3m\]\w\[\e[23m\] ── \[\e[3m\]$PS1_CMD1\[\e[23m\] ── \[\e[1m\]\n\[\e[0;2m\]│\n\[\e[0m\]\[\e[2m\]╰─(󰥳) \[\e[0m\]'
+        source ~/git-prompt.sh
+        PROMPT_COMMAND='PS1_CMD1=$(__git_ps1 " (%s)")'; PS1='\n\[\e[2m\]╭── \[\e[1;3m\]\[\e[0m\] \[\e[1;2;3m\]\u\[\e[0m\]  \n\[\e[2m\]├── \[\e[1;3m\]\[\e[0m\] \[\e[1;2;3m\]\H\n\[\e[0;2m\]├── \[\e[1;3m\]\[\e[0m\] \[\e[1;2;3m\]\w\[\e[38;5;230m\]$PS1_CMD1\n\[\e[0;2m\]│\n│\n\[\e[0m\]\[\e[1;2m\]╰── 󰥳 \[\e[0m\]'
       '';
 			shellAliases = {
         la="ls -al";
