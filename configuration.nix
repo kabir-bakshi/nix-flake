@@ -33,6 +33,8 @@
     
     # Use latest kernel and add modules.
     kernelPackages = pkgs.linuxPackages_latest;
+    
+    # kernelModules = [ "kvm-intel" ]; # for virtualisation
 
     plymouth = {
       enable = true;
@@ -45,6 +47,8 @@
       ];
     };
   };
+
+  # virtualisation.libvirtd.enable = true;
 
   # Enable backlight support
   hardware.i2c.enable = true;
@@ -90,14 +94,16 @@
   stylix = {
     enable = true;
     polarity = "dark";
-    image = ./Media/Wallpapers/kannur_blueprint.svg;
+    image = ./Media/Wallpapers/Camel.png;
     # cursor = {
       # package = pkgs.bibata-cursors;
       # name = "Bibata-Modern-Amber";
     # };
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/chalk.yaml";
     targets.plymouth.enable = false;
+    # base16Scheme = "${pkgs.base16-schemes}/share/themes/chalk.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/da-one-ocean.yaml";
   };
+
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -129,7 +135,7 @@
     kabir = {
       isNormalUser = true;
       description = "Kabir Bakshi";
-      extraGroups = [ "networkmanager" "wheel" ]; # i2c for baclight control
+      extraGroups = [ "networkmanager" "wheel" "qemu-libvirtd" "libvirtd"]; # i2c for baclight control
       packages = with pkgs; [
         # thunderbird 
       ];
@@ -186,25 +192,28 @@
       gnome-console
       eog
     # KDE
-      kdePackages.okular  
+      kdePackages.okular
     # Extensions
         #gnomeExtensions.dash-to-panel
         gnomeExtensions.dash-to-dock
         gnomeExtensions.paperwm
-        gnomeExtensions.hide-top-bar
+        # gnomeExtensions.hide-top-bar # paperwm has it as a shortcut
         gnomeExtensions.appindicator
     # GAMES & WINDOWS
       heroic
+
     # IP TUNNELING
-      zerotierone
-      # inputs.nixpkgs-unstable.legacyPackages.${pkgs.system}.netbird
+      # zerotierone
       
+    # Cosmetic
       bibata-cursors
 
     # Programming
       nerd-fonts.intone-mono # font, duh...
       neovim # Code Editor
       kitty # Terminal Emulator
+      alacritty
+      python315
   ];
   
   # services.netbird.enable = true; # Latest version can be obtained using manual installation method given in docs. but it needs you to run "sudo netbird service run" manually or you can set this command itself to run on boot.
