@@ -101,7 +101,8 @@
     # };
     targets.plymouth.enable = false;
     # base16Scheme = "${pkgs.base16-schemes}/share/themes/chalk.yaml";
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/da-one-ocean.yaml";
+    # base16Scheme = "${pkgs.base16-schemes}/share/themes/da-one-ocean.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
   };
 
 
@@ -119,12 +120,6 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
@@ -154,12 +149,8 @@
     }
   ];
 
-
-  # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
     # TEXT EDITOR
       vim
@@ -167,6 +158,8 @@
       brave
     # BACKUP
       rclone    
+    # FONTS
+      noto-fonts
     # UTILITY for
       # backlight control
         ddcutil
@@ -182,9 +175,9 @@
         gparted
       # editing nram
         efibootmgr
-      # iso image writer
-        # mediawriter
-    # JAVA
+      # Z-Archives
+        unzip
+      # JAVA
       javaPackages.compiler.openjdk21    
     # GNOME
       nautilus
@@ -202,17 +195,13 @@
     # GAMES & WINDOWS
       heroic
 
-    # IP TUNNELING
-      # zerotierone
-      
     # Cosmetic
       bibata-cursors
 
     # Programming
       nerd-fonts.intone-mono # font, duh...
       neovim # Code Editor
-      kitty # Terminal Emulator
-      alacritty
+      gnome-terminal
       python315
   ];
   
@@ -223,10 +212,12 @@
 
   services.flatpak.packages = [
     "org.telegram.desktop"
-    {
+
+    { # elyprismlauncher
       flatpakref = "https://elyprismlauncher.github.io/flatpak/elyprismlauncher.flatpakref";
       sha256="b7c919c031d048cc01e2378909aa030e4737417008c5ab0ea29cab098b50b477";
     }
+
   ];
   
   virtualisation.waydroid.enable = true;
