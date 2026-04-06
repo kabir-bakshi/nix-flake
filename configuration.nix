@@ -94,7 +94,7 @@
   stylix = {
     enable = true;
     polarity = "dark";
-    image = ./Media/Wallpapers/Camel.png;
+    image = ./Media/Wallpapers/Lotus_rose-pine.png;
     # cursor = {
       # package = pkgs.bibata-cursors;
       # name = "Bibata-Modern-Amber";
@@ -157,10 +157,10 @@
     # BROWSER
       brave
     # BACKUP
-      rclone    
-    # FONTS
-      noto-fonts
+      rclone 
     # UTILITY for
+      # remote desktop
+        anydesk
       # backlight control
         ddcutil
       # file share
@@ -194,16 +194,25 @@
         gnomeExtensions.appindicator
     # GAMES & WINDOWS
       heroic
+      parsec-bin
 
     # Cosmetic
       bibata-cursors
 
     # Programming
-      nerd-fonts.intone-mono # font, duh...
       neovim # Code Editor
       gnome-terminal
       python315
   ];
+
+  fonts.packages = with pkgs; [
+    noto-fonts
+    noto-fonts-cjk-sans
+    noto-fonts-color-emoji
+    liberation_ttf
+    nerd-fonts.intone-mono
+
+];
   
   # services.netbird.enable = true; # Latest version can be obtained using manual installation method given in docs. but it needs you to run "sudo netbird service run" manually or you can set this command itself to run on boot.
 
