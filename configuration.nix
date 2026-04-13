@@ -38,13 +38,15 @@
 
     plymouth = {
       enable = true;
-      theme = "splash";
+      theme = "bgrt";
+      /*
       themePackages = with pkgs; [
         # By default we would install all themes
         (adi1090x-plymouth-themes.override {
           selected_themes = [ "splash" ];
         })
       ];
+      */
     };
   };
 
@@ -52,6 +54,10 @@
 
   # Enable backlight support
   hardware.i2c.enable = true;
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true; # Crucial for 32-bit games like GTA IV/NextGen
+  };
 
   # Define your hostname.
   networking.hostName = "nixos";
@@ -90,6 +96,16 @@
   
   services.gnome.core-apps.enable = false;
   
+  nix.settings = {
+    substituters = [
+      "https://nix-community.cachix.org"
+    ];
+    
+    trusted-public-keys = [
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+    ];
+  };
+/*
   #  Stylix config
   stylix = {
     enable = true;
@@ -104,7 +120,7 @@
     # base16Scheme = "${pkgs.base16-schemes}/share/themes/da-one-ocean.yaml";
     base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
   };
-
+*/
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -130,7 +146,7 @@
     kabir = {
       isNormalUser = true;
       description = "Kabir Bakshi";
-      extraGroups = [ "networkmanager" "wheel" "qemu-libvirtd" "libvirtd"]; # i2c for baclight control
+      extraGroups = [ "networkmanager" "wheel" ]; # i2c for baclight control
       packages = with pkgs; [
         # thunderbird 
       ];
@@ -152,59 +168,52 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
-    # TEXT EDITOR
-      vim
-    # BROWSER
-      brave
-    # BACKUP
-      rclone 
-    # UTILITY for
-      # remote desktop
-        anydesk
-      # backlight control
-        ddcutil
-      # file share
-        localsend
-      # equaliser and other
-        easyeffects
-      # download manager
-        uget
-      # version control
-        git
-      # editing disk partitions
-        gparted
-      # editing nram
-        efibootmgr
-      # Z-Archives
-        unzip
-      # JAVA
-      javaPackages.compiler.openjdk21    
+      brave                           # Browser
+      rclone                          # Backup
+      /*
+      anydesk                         # Remote desktop
+      ddcutil                         # Backlight control
+      localsend                       # File share
+      easyeffects                     # Equaliser and other
+      qbittorrent                     # Download manager
+      git                             # Version control
+      gparted                         # Editing disk partitions
+      efibootmgr                      # Editing nvram
+      unzip                           # Z-Archives
+      btop                            # Task manager
+      javaPackages.compiler.openjdk21 # Java
+      */
+      neovim                          # Code Editor
+      netbird                         # IP tunneling
+
     # GNOME
       nautilus
       refine
       gnome-console
       eog
+      gnome-terminal
+
     # KDE
       kdePackages.okular
-    # Extensions
-        #gnomeExtensions.dash-to-panel
-        gnomeExtensions.dash-to-dock
-        gnomeExtensions.paperwm
-        # gnomeExtensions.hide-top-bar # paperwm has it as a shortcut
-        gnomeExtensions.appindicator
-    # GAMES & WINDOWS
-      heroic
-      parsec-bin
 
+    # Extensions
+      gnomeExtensions.dash-to-dock
+      gnomeExtensions.paperwm
+      # gnomeExtensions.hide-top-bar # paperwm has it as a shortcut
+      gnomeExtensions.appindicator
+
+    # GAMES & WINDOWS
+    /*
+      heroic
+      wineWow64Packages.staging # wine-staging (version with experimental features)
+      winetricks # winetricks (all versions)
+      wineWow64Packages.waylandFull # native wayland support (unstable)
+      # parsec-bin
+*/
     # Cosmetic
       bibata-cursors
-
-    # Programming
-      neovim # Code Editor
-      gnome-terminal
-      python315
   ];
-
+/*
   fonts.packages = with pkgs; [
     noto-fonts
     noto-fonts-cjk-sans
@@ -212,7 +221,7 @@
     liberation_ttf
     nerd-fonts.intone-mono
 
-];
+  ];*/
   
   # services.netbird.enable = true; # Latest version can be obtained using manual installation method given in docs. but it needs you to run "sudo netbird service run" manually or you can set this command itself to run on boot.
 

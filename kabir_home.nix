@@ -7,7 +7,7 @@
 		bash = {
 			enable = true;
   			initExtra = ''
-				  export PATH=$PATH:/usr/bin 
+				  # export PATH=$PATH:/usr/bin 
 			    # echo 󰥳 गं गणपतये नमः।
           
           fastfetch

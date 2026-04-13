@@ -2,20 +2,20 @@
 	description = "Lenovo m720q Flake for Kabir";
 
 	inputs = {
-		nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
-		nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+		# nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+		nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
 		nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
 
 		home-manager = {
-			url = "github:nix-community/home-manager/release-25.11";
+			url = "github:nix-community/home-manager";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 		
-		stylix.url = "github:nix-community/stylix/release-25.11";
+		stylix.url = "github:nix-community/stylix";
 	};
 
-	outputs = { nixpkgs, nixpkgs-unstable, nix-flatpak, home-manager, ... } @ inputs: {
+	outputs = { nixpkgs, nix-flatpak, home-manager, ... } @ inputs: {
 		nixosConfigurations = {
 			nixos = nixpkgs.lib.nixosSystem {
 				system = "x86_64-linux";
