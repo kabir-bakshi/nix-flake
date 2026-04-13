@@ -200,7 +200,6 @@
 
     # Cosmetic
       bibata-cursors
-      aria2
       persepolis
   ];
 
