@@ -17,8 +17,8 @@
       efi.canTouchEfiVariables = true;
     };
     
-    # Silence first boot output
-    consoleLogLevel = 3;    
+    consoleLogLevel = 3; # Silence first boot output
+
     initrd = {
       verbose = false;
       systemd.enable = true;
@@ -54,6 +54,7 @@
 
   # Enable backlight support
   hardware.i2c.enable = true;
+  
   hardware.graphics = {
     enable = true;
     enable32Bit = true; # Crucial for 32-bit games like GTA IV/NextGen
@@ -73,18 +74,11 @@
   time.timeZone = "Asia/Kolkata";
 
   # Select internationalisation properties.
-  i18n.defaultLocale = "en_IN";
+  i18n.defaultLocale = "en_US.UTF-8";
+  # i18n.defaultLocale = "en_IN.UTF-8";
 
   i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_IN";
-    LC_IDENTIFICATION = "en_IN";
-    LC_MEASUREMENT = "en_IN";
-    LC_MONETARY = "en_IN";
-    LC_NAME = "en_IN";
-    LC_NUMERIC = "en_IN";
-    LC_PAPER = "en_IN";
-    LC_TELEPHONE = "en_IN";
-    LC_TIME = "en_IN";
+    LC_ALL = "en_US.UTF-8"; # This overrides all other LC_* settings.
   };
 
   # Enable the X11 windowing system.
@@ -105,7 +99,7 @@
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
     ];
   };
-/*
+
   #  Stylix config
   stylix = {
     enable = true;
@@ -116,16 +110,14 @@
       # name = "Bibata-Modern-Amber";
     # };
     targets.plymouth.enable = false;
-    # base16Scheme = "${pkgs.base16-schemes}/share/themes/chalk.yaml";
-    # base16Scheme = "${pkgs.base16-schemes}/share/themes/da-one-ocean.yaml";
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
+      base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml"; # or chalk, da-one-ocean
   };
-*/
+
 
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
-    variant = "";
+    # variant = "";
   };
 
   # Enable sound with pipewire.
@@ -168,28 +160,25 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
-      brave                           # Browser
-      rclone                          # Backup
-      /*
-      anydesk                         # Remote desktop
-      ddcutil                         # Backlight control
-      localsend                       # File share
-      easyeffects                     # Equaliser and other
-      qbittorrent                     # Download manager
-      git                             # Version control
-      gparted                         # Editing disk partitions
-      efibootmgr                      # Editing nvram
-      unzip                           # Z-Archives
-      btop                            # Task manager
-      javaPackages.compiler.openjdk21 # Java
-      */
-      neovim                          # Code Editor
-      netbird                         # IP tunneling
+    brave                           # Browser
+    rclone                          # Backup
+    anydesk                         # Remote desktop
+    ddcutil                         # Backlight control
+    localsend                       # File share
+    easyeffects                     # Equaliser and other
+    qbittorrent                     # Download manager
+    git                             # Version control
+    gparted                         # Editing disk partitions
+    efibootmgr                      # Editing nvram
+    unzip                           # Z-Archives
+    btop                            # Task manager
+    javaPackages.compiler.openjdk21 # Java
+    neovim                          # Code Editor
+    netbird                         # IP tunneling
 
     # GNOME
       nautilus
       refine
-      gnome-console
       eog
       gnome-terminal
 
@@ -203,27 +192,27 @@
       gnomeExtensions.appindicator
 
     # GAMES & WINDOWS
-    /*
       heroic
       wineWow64Packages.staging # wine-staging (version with experimental features)
       winetricks # winetricks (all versions)
       wineWow64Packages.waylandFull # native wayland support (unstable)
       # parsec-bin
-*/
+
     # Cosmetic
       bibata-cursors
+      aria2
+      persepolis
   ];
-/*
+
   fonts.packages = with pkgs; [
     noto-fonts
     noto-fonts-cjk-sans
     noto-fonts-color-emoji
     liberation_ttf
     nerd-fonts.intone-mono
-
-  ];*/
+  ];
   
-  # services.netbird.enable = true; # Latest version can be obtained using manual installation method given in docs. but it needs you to run "sudo netbird service run" manually or you can set this command itself to run on boot.
+  services.netbird.enable = true; # Latest version can be obtained using manual installation method given in docs. but it needs you to run "sudo netbird service run" manually or you can set this command itself to run on boot.
 
   # Enable Flatpak
   services.flatpak.enable = true;
@@ -255,5 +244,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.11"; # Did you read the comment?
-
 } 
