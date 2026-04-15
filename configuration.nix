@@ -75,6 +75,7 @@
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
+  i18n.inputMethod.enabled = "ibus";
   # i18n.defaultLocale = "en_IN.UTF-8";
 
   i18n.extraLocaleSettings = {
@@ -117,7 +118,6 @@
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
-    # variant = "";
   };
 
   # Enable sound with pipewire.
@@ -143,11 +143,19 @@
         # thunderbird 
       ];
     };
+    krishna = {
+      isNormalUser = true;
+      description = "Krishna Bakshi";
+      extraGroups = [ "networkmanager" "wheel" ]; # i2c for baclight control
+      packages = with pkgs; [
+        # thunderbird 
+      ];
+    };
   };
 
   security.sudo.extraRules = [
     { 
-      users = [ "kabir" ];
+      users = [ "kabir" "krishna" ];
       commands = [ 
         {
           command = "/run/current-system/sw/bin/ddcutil";
@@ -175,6 +183,10 @@
     javaPackages.compiler.openjdk21 # Java
     neovim                          # Code Editor
     netbird                         # IP tunneling
+    obsidian                        # Best MD File Editor
+    persepolis                      # Downlaod Manager
+    p7zip                           # zipping and unzipping tool
+    gnome-extension-manager
 
     # GNOME
       nautilus
