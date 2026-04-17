@@ -143,6 +143,7 @@
         # thunderbird 
       ];
     };
+    /*
     krishna = {
       isNormalUser = true;
       description = "Krishna Bakshi";
@@ -151,11 +152,12 @@
         # thunderbird 
       ];
     };
+    */
   };
 
   security.sudo.extraRules = [
     { 
-      users = [ "kabir" "krishna" ];
+      users = [ "kabir" /* "krishna" */ ];
       commands = [ 
         {
           command = "/run/current-system/sw/bin/ddcutil";
@@ -170,7 +172,7 @@
   environment.systemPackages = with pkgs; [
     brave                           # Browser
     rclone                          # Backup
-    anydesk                         # Remote desktop
+    # anydesk                         # Remote desktop
     ddcutil                         # Backlight control
     localsend                       # File share
     easyeffects                     # Equaliser and other
@@ -183,10 +185,11 @@
     javaPackages.compiler.openjdk21 # Java
     neovim                          # Code Editor
     netbird                         # IP tunneling
-    obsidian                        # Best MD File Editor
-    persepolis                      # Downlaod Manager
-    p7zip                           # zipping and unzipping tool
+    # obsidian                        # Best MD File Editor
+    # persepolis                      # Downlaod Manager
+    # p7zip                           # zipping and unzipping tool
     gnome-extension-manager
+    xorriso
 
     # GNOME
       nautilus
@@ -219,7 +222,7 @@
     noto-fonts
     noto-fonts-cjk-sans
     noto-fonts-color-emoji
-    liberation_ttf
+    # liberation_ttf
     nerd-fonts.intone-mono
   ];
   
@@ -235,6 +238,8 @@
       flatpakref = "https://elyprismlauncher.github.io/flatpak/elyprismlauncher.flatpakref";
       sha256="b7c919c031d048cc01e2378909aa030e4737417008c5ab0ea29cab098b50b477";
     }
+
+    "org.jdownloader.JDownloader"
 
   ];
   

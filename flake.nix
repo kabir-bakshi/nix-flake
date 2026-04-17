@@ -35,7 +35,7 @@
 							backupFileExtension = "nix_backup";
 							
 							users.kabir = ./kabir_home.nix;
-							users.krishna = ./krishna_home.nix;
+							# users.krishna = ./krishna_home.nix;
 						};
 					}
 					
