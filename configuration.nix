@@ -187,9 +187,10 @@
     netbird                         # IP tunneling
     # obsidian                        # Best MD File Editor
     # persepolis                      # Downlaod Manager
-    # p7zip                           # zipping and unzipping tool
+    p7zip                           # zipping and unzipping tool
     gnome-extension-manager
-    xorriso
+    ntfs3g
+    ventoy
 
     # GNOME
       nautilus
