@@ -166,6 +166,14 @@
       ]; 
     }
   ];
+  
+  /*
+  services.undervolt = {
+    enable = true;
+    coreOffset = -50;
+    uncoreOffset = -50; # This is the cache offset
+  };
+  */
 
   nixpkgs.config.allowUnfree = true;
 
@@ -176,11 +184,11 @@
     ddcutil                         # Backlight control
     localsend                       # File share
     easyeffects                     # Equaliser and other
-    qbittorrent                     # Download manager
+    # qbittorrent                     # Download manager
     git                             # Version control
     gparted                         # Editing disk partitions
     efibootmgr                      # Editing nvram
-    unzip                           # Z-Archives
+    # unzip                           # Z-Archives
     btop                            # Task manager
     javaPackages.compiler.openjdk21 # Java
     neovim                          # Code Editor
@@ -188,9 +196,8 @@
     # obsidian                        # Best MD File Editor
     # persepolis                      # Downlaod Manager
     p7zip                           # zipping and unzipping tool
-    gnome-extension-manager
-    ntfs3g
-    ventoy
+    # gnome-extension-manager
+    # ntfs3g
 
     # GNOME
       nautilus
@@ -242,8 +249,11 @@
 
     "org.jdownloader.JDownloader"
 
+    "dev.lizardbyte.app.Sunshine"
+
   ];
-  
+
+
   virtualisation.waydroid.enable = true;
   
   # Permanently enable EXPERIMENTAL support for flakes
