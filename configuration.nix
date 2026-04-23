@@ -105,7 +105,7 @@
   stylix = {
     enable = true;
     polarity = "dark";
-    image = ./Media/Wallpapers/Lotus_rose-pine.png;
+    image = ./Media/Wallpapers/Padmanabhaswami.png;
     # cursor = {
       # package = pkgs.bibata-cursors;
       # name = "Bibata-Modern-Amber";
@@ -196,8 +196,9 @@
     # obsidian                        # Best MD File Editor
     # persepolis                      # Downlaod Manager
     p7zip                           # zipping and unzipping tool
-    # gnome-extension-manager
+    gnome-extension-manager
     # ntfs3g
+    yt-dlp
 
     # GNOME
       nautilus
